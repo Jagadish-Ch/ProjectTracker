@@ -41,12 +41,13 @@ app.post("/registermember", async (req, res) => {
 app.post("/login", async(req, res) => {
     try {
         const {email, password} = req.body;
-        const exist = await RegisterUser.findOne({email});
+        let exist = await RegisterUser.findOne({email});
+        console.log(exist)
 
         if(!exist){
             return res.send("User not Found...!");
         }
-        if(exist.password != password){
+        if(exist.password !== password){
             return res.send("Invalid Password...!");
         }
         
@@ -58,7 +59,7 @@ app.post("/login", async(req, res) => {
 
         jwt.sign(payload, 'jwtSecretKey', {expiresIn:3600000},
             (err, token) =>{
-                if(err) throw err;
+                if (err) throw err;
                 return res.json({token})
             }
         )
@@ -79,6 +80,16 @@ app.get("/myprofile", Middleware, async (req, res)=>{
     } 
     catch (err) {
         console.log(err);
+        return res.send("Server Error");
+    }
+})
+
+app.post("/newproject", async(req, res)=>{
+    try {
+        // const {projectName, memberName, } = req.body;
+    } 
+    catch (err) {
+        console.log(err)
         return res.send("Server Error");
     }
 })

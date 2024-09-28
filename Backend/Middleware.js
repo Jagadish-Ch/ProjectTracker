@@ -7,11 +7,11 @@ module.exports = function( req, res, next){
             return res.send("Token Not Found...!");
         }
         let decode = jwt.verify(token, 'jwtSecretKey');
-        req.user = decode.user;
+        req.user = decode.user
         next();
     } 
     catch (err) {
         console.log(err);
-        return res.send("Server Error");
+        return res.send("Invalid Token...!");
     }
 }

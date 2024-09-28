@@ -402,12 +402,13 @@ body {
   border-radius: 10px;
 }
 
-.container1{
+.container1, .container2{
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 15px;
 }
 .singleLineInput{
+    max-width:  100% ;
     background-color: lightgray;
     padding: 10px;
     border: 2px solid white;
@@ -428,7 +429,6 @@ body {
     color: white;
 }
 .choose-profile-btn{
-    max-width: 40%;
     color: black;
     background-color: lightgray;
 }
@@ -441,6 +441,10 @@ body {
     background-color: rgb(67, 195, 255);
     border-radius: 10px;
     margin-bottom: 50px;
+}
+
+.container2 .textBox{
+    max-width: 48%;
 }
 
 /* Responsive Timeline */
@@ -508,9 +512,21 @@ body {
     }
 
     .choose-profile-btn{
-        width: 10em;
+        max-width: 100%;
         border: none;
         border-radius: 30px;
+    }
+
+    /* NewProjectForm */
+    .container2{
+        display: block;
+        margin: 0px;
+    }
+
+    .container2 .textBox{
+        display: block;
+        max-width: 100%;
+        margin-bottom: 5px;
     }
     
 }

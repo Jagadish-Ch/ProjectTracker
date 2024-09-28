@@ -10,7 +10,9 @@ const NewProjectForm = () => {
         {
           "memberName" : "",
           "roleInProject" : "",
-          "profile" : ""
+          "profile" : "",
+          "email" : "",
+          "password" : ""
         }
       ]
     )
@@ -21,11 +23,13 @@ const NewProjectForm = () => {
     const handleAddMember = () => {
       setAddMember(
         [...addMember,
-        {
-          "memberName" : "",
-          "roleInProject" : "",
-          "profile" : ""
-        }]
+          {
+            "memberName" : "",
+            "roleInProject" : "",
+            "profile" : "",
+            "email" : "",
+            "password" : ""
+          }]
       )
     }
 
@@ -55,9 +59,8 @@ const NewProjectForm = () => {
       e.preventDefault(); // Prevent default form submission behavior
 
       const formData = {
-        assignedTaskName,
-        taskStatus,
-        
+        projectName : projectName,
+        Team: addMember 
       }
     
       try {
@@ -66,7 +69,7 @@ const NewProjectForm = () => {
 
         console.log('Form submitted successfully', response.data);
       } catch (error) {
-        console.error('Error submitting form', error);
+        console.error('Error submitting form : ', error);
       }
     }
 
@@ -108,7 +111,7 @@ const NewProjectForm = () => {
               <button className='textBox remove-btn' onClick={(e) => handleRemoveMember(e, index)}>X</button>
             </div>
             
-            <div className='container1'>
+            <div className='container2'>
               <select name='roleInProject'
                 className='textBox select-option' 
                 value={singleMember.roleInProject} 
@@ -130,6 +133,31 @@ const NewProjectForm = () => {
               />
               
             </div>
+
+            <div className='container2'>
+              <input 
+                type='text' 
+                name='email'
+                className='textBox email' 
+                placeholder= "Enter Email-Id"
+                value={singleMember.email}
+                autoComplete="off"
+                required 
+                onChange={(e) => handleChange(e, index)}
+              />
+
+              <input 
+                type='text' 
+                name='password'
+                className='textBox password' 
+                placeholder= "Enter Password"
+                value={singleMember.password}
+                autoComplete="off"
+                required 
+                onChange={(e) => handleChange(e, index)}
+              /><br/>
+            </div>
+
           </div>
         ))}
 
